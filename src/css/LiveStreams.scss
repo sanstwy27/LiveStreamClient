@@ -1,0 +1,32 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+/* @import '~video.js/dist/video-js.css'; */
+
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+html,body{
+  font-family: 'Dosis', sans-serif;
+}
+
+.pagination-container {
+  overflow: hidden;
+  display: flex;
+  margin: 0 6% 0 5%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-container {
+  resize: horizontal;
+  overflow: hidden;
+  display: flex;
+  margin: 0 0 0 3%;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.item {
+  min-width: 0;
+  color: white;
+  font-family: monospace;
+  font-size: 13px;
+}

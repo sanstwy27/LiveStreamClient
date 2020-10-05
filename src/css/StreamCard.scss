@@ -1,0 +1,59 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+$card-width: 250px;
+$card-height: 300px;
+$content-left-mergin: 2px 2px 2px 2px;
+
+.stream {
+    background-color: #1B5385;
+    // flex: 0 25%;
+    border: 10px solid white;
+    padding: 10px;
+    height: $card-height;
+
+    .stream-title {
+        margin: $content-left-mergin;
+        width: $card-width;
+        line-height: 1.5em;
+        height: 3em;       /* height is 2x line-height, so two lines will display */
+        overflow: hidden;  /* prevents extra lines from being visible */
+    }
+
+    .live-label {
+        // position: absolute;
+        top: 10px;
+        left: 20px;
+        background-color: red;
+        color: white;
+        padding: 1px 5px;
+    }
+
+    .stream-thumbnail {
+        margin: $content-left-mergin;
+        img {
+            width: $card-width;
+            height: 180px;
+        }
+    }
+
+    .info {
+        margin: $content-left-mergin;
+        width: $card-width;
+        display: flex;
+        justify-content: space-between;
+
+        .streamer {
+            a {
+                font-size: 18px;
+                color: white;
+                text-decoration: none;
+                padding: 2px 8px;
+            }
+        }
+
+        .view-count {
+
+        }
+    }
+
+}

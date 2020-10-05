@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {Router, Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Navbar from './components/Navbar';
+import LiveStreams from './components/LiveStreams';
+import MyPlayer from './components/player/MyPlayer';
+import TwitchPlayer from './components/player/TwitchPlayer';
+
+const customHistory = require("history").createBrowserHistory();
+
+class App extends Component {
+  render() {
+    return (
+      <Router history={customHistory} >
+          <div>
+              <Navbar/>
+              <Route exact path="/" render={props => (
+                  <LiveStreams  {...props} />
+              )}/>
+
+              <Route exact path="/twitch/:username" render={(props) => (
+                  <TwitchPlayer {...props}/>
+              )}/>
+
+              <Route exact path="/stream/:username" render={(props) => (
+                  <MyPlayer {...props}/>
+              )}/>
+
+              {/* <Route exact path="/settings" render={props => (
+                  <Settings {...props} />
+              )}/> */}
+          </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
