@@ -119,25 +119,25 @@ class Pagination extends React.Component {
                 <nav aria-label="Streams Pagination">
                     <ul className="pagination">
                         <li key={uuid()} className={pager.currentPage === 1 ? 'disabled' : ''}>
-                            <a className={'page-link page-item-first'} onClick={() => this.setPage(1)} href="/#">First</a>
+                            <a className={'page-link page-item-first'} onClick={() => this.setPage(1)} href="/twitch/#">First</a>
                         </li>
                         <li key={uuid()} className={pager.currentPage === 1 ? 'disabled' : ''}>
-                            <a className={'page-link page-item-previous'} onClick={() => this.setPage(pager.currentPage - 1)} href="/#">Previous</a>
+                            <a className={'page-link page-item-previous'} onClick={() => this.setPage(pager.currentPage - 1)} href="/twitch/#">Previous</a>
                         </li>
                     </ul>
                     <ul className="pagination">
                         {pager.pages.map((page, index) =>
                             <li key={uuid()} className={`page-item${pager.currentPage === page ? " active" : ""}`}>
-                                <a className={'page-link'} onClick={() => this.setPage(page)} href="/#">{page}</a>
+                                <a className={'page-link'} onClick={() => this.setPage(page)} href="/twitch/#">{page}</a>
                             </li>
                         )}
                     </ul>
                     <ul className="pagination">
                         <li key={uuid()} className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                            <a className={'page-link page-item-next'} onClick={() => this.setPage(pager.currentPage + 1)} href="/#">Next</a>
+                            <a className={'page-link page-item-next'} onClick={() => this.setPage(pager.currentPage + 1)} href="/twitch/#">Next</a>
                         </li>
                         <li key={uuid()} className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                            <a className={'page-link page-item-last'} onClick={() => this.setPage(pager.totalPages)} href="/#">Last</a>
+                            <a className={'page-link page-item-last'} onClick={() => this.setPage(pager.totalPages)} href="/twitch/#">Last</a>
                         </li>
                     </ul>
                 </nav>

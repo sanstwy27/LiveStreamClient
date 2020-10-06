@@ -1,9 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export default function LanguageButtons(props) {
-    const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState("en");
   
     const radios = [

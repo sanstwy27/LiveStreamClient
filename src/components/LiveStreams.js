@@ -6,11 +6,6 @@ import Pagination from './Pagination';
 import StreamCard from './StreamCard';
 import LanguageButtons from './LanguageButtons'
 
-const languageRadios = [
-  { name: 'English', value: 'en' },
-  { name: '中文', value: 'zh' },
-];
-
 class App extends Component {
   constructor() {
     super();

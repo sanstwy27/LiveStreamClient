@@ -14,7 +14,7 @@ class App extends Component {
       <Router history={customHistory} >
           <div>
               <Navbar/>
-              <Route exact path="/" render={props => (
+              <Route exact path="/twitch" render={props => (
                   <LiveStreams  {...props} />
               )}/>
 
