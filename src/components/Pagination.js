@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 import '../css/Pagination.scss'
 
 const propTypes = {
-    items: PropTypes.array.isRequired,
+    totalItems: PropTypes.number.isRequired,
     onChangePage: PropTypes.func.isRequired,
     initialPage: PropTypes.number,
     pageSize: PropTypes.number
@@ -23,20 +23,20 @@ class Pagination extends React.Component {
 
     componentWillMount() {
         // set page if items array isn't empty
-        if (this.props.items && this.props.items.length) {
+        if (this.props.totalItems) {
             this.setPage(this.props.initialPage);
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         // reset page if items array has changed
-        if (this.props.items !== prevProps.items) {
+        if (this.props.totalItems !== prevProps.totalItems) {
             this.setPage(this.props.initialPage);
         }
     }
 
     setPage(page) {
-        var { items, pageSize } = this.props;
+        var { totalItems, pageSize } = this.props;
         var pager = this.state.pager;
 
         if (page < 1 || page > pager.totalPages) {
@@ -44,16 +44,13 @@ class Pagination extends React.Component {
         }
 
         // get new pager object for specified page
-        pager = this.getPager(items.length, page, pageSize);
-
-        // get new page of items from items array
-        var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
+        pager = this.getPager(totalItems, page, pageSize);
 
         // update state
         this.setState({ pager: pager });
 
         // call change page function in parent component
-        this.props.onChangePage(pageOfItems);
+        this.props.onChangePage(page, pageSize);
     }
 
     getPager(totalItems, currentPage, pageSize) {

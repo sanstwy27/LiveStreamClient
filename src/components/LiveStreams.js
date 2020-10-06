@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import uuid from 'react-uuid'
+import axios from 'axios';
 import '../css/LiveStreams.scss';
 import Pagination from './Pagination';
 import StreamCard from './StreamCard';
@@ -7405,14 +7405,22 @@ const testData = {
 class App extends Component {
   constructor() {
     super();
-    this.state = { allStreams: [], currentStreams: [], currentPage: null, totalPages: null }
+    this.state = { currentStreams: [], currentPage: null, totalStreams: null, totalPages: null }
     // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
     this.onChangePage = this.onChangePage.bind(this);
   }
 
   componentDidMount() {
-    const { data: allStreams = [] } = testData;
-    this.setState({ allStreams });
+    // const { data: allStreams = [] } = testData;
+    // this.setState({ allStreams });
+    this.updateStreamItems(1, 18);
+  }
+
+  updateStreamItems(page, offset) {
+    axios.get(`http://localhost:8080/api/twitch/slist/${page}/${offset}`)
+      .then(res => {
+        this.setState({ currentStreams: res.data.data, totalStreams: res.data.total });
+      })
   }
 
   onPageChanged = data => {
@@ -7425,21 +7433,21 @@ class App extends Component {
     }
   }
 
-  onChangePage(pageOfItems) {
+  onChangePage(page, offset) {
     // update state with new page of items
-    this.setState({ currentStreams: pageOfItems });
+    this.updateStreamItems(page, offset);
+    // this.setState({ currentStreams: pageOfItems });
   }
 
   render() {
-    const { allStreams, currentStreams, currentPage, totalPages } = this.state;
-    const totalStreams = allStreams.length;
+    const { currentStreams, currentPage, totalStreams, totalPages } = this.state;
+    // const totalStreams = allStreams.length;
 
-    if (totalStreams === 0) return null;
+    if (!totalStreams || totalStreams === 0) return null;
 
     const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
 
     return (
-      <Fragment>
       <div className="live-container">
         <div className="pagination-container d-flex flex-row align-items-center">
           <div className="d-flex flex-row align-items-center">
@@ -7453,7 +7461,7 @@ class App extends Component {
             )}
           </div>
           <div className="d-flex flex-row py-3 align-items-center">
-            <Pagination items={allStreams} onChangePage={this.onChangePage}/>
+            <Pagination totalItems={totalStreams} onChangePage={this.onChangePage}/>
           </div>
         </div>
         <div className="flex-container">
@@ -7464,7 +7472,6 @@ class App extends Component {
           )}
         </div>
       </div>
-      </Fragment>
     );
   }
 }
