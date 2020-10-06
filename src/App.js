@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {Router, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import LiveTwitchStreams from './components/LiveTwitchStreams';
-import LiveNginxStreams from './components/LiveNginxStreams';
+import LiveStreams from './components/LiveStreams';
 import TwitchPlayer from './components/player/TwitchPlayer';
 import NginxPlayer from './components/player/NginxPlayer';
 
@@ -16,19 +15,19 @@ class App extends Component {
           <div>
               <Navbar/>
               <Route exact path="/twitch" render={props => (
-                  <LiveTwitchStreams  {...props} />
+                  <LiveStreams app={"twitch"} {...props} />
               )}/>
 
               <Route exact path="/twitch/:username" render={(props) => (
-                  <TwitchPlayer {...props} />
+                  <TwitchPlayer app={"twitch"} {...props} />
               )}/>
 
               <Route exact path="/nginx" render={props => (
-                  <LiveNginxStreams {...props} />
+                  <LiveStreams app={"nginx"} { ...props} />
               )}/>
 
               <Route exact path="/nginx/:username" render={(props) => (
-                  <NginxPlayer {...props} />
+                  <NginxPlayer app={"nginx"} {...props} />
               )}/>
 
               {/* <Route exact path="/settings" render={props => (

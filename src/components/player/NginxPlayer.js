@@ -1,11 +1,12 @@
 import React from 'react'
 import flvjs from 'flv.js'
+import '../../css/NginxPlayer.scss'
 
-var mediaDataSource = {
-  type: 'flv',
-  url: 'http://1011.hlsplay.aodianyun.com/demo/game.flv',
-  cors: true
-};
+// var mediaDataSource = {
+//   type: 'flv',
+//   url: 'http://1011.hlsplay.aodianyun.com/demo/game.flv',
+//   cors: true
+// };
 
 var player;
 
@@ -25,6 +26,12 @@ class MyPlayer extends React.Component {
             player = null;
         }
     }
+
+    var mediaDataSource = {
+      type: 'flv',
+      url: this.props.location.state.streamUrl,
+      cors: true
+    };
     player = flvjs.createPlayer(mediaDataSource, {
         enableWorker: false,
         lazyLoadMaxDuration: 3 * 60,
@@ -36,13 +43,12 @@ class MyPlayer extends React.Component {
 
   render() {
     return (
-      <div className="main-wrap">
-        <div className="title">flvjs demo</div>
+      <div className="nginx">
         <div className="video-container">
           <div>
-            <video name="videoElement" className="centeredVideo" controls autoPlay poster="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png">
+            <video name="videoElement" className="centeredVideo" controls autoPlay poster="http://localhost:3000/nginx.png">
               Your browser is too old which doesn't support HTML5 video.
-                        </video>
+            </video>
           </div>
         </div>
       </div>

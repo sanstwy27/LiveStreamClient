@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import '../css/LiveTwitchStreams.scss';
+import '../css/LiveStreams.scss';
 import Pagination from './Pagination';
 import StreamCard from './StreamCard';
 import LanguageButtons from './LanguageButtons'
@@ -25,11 +25,19 @@ class App extends Component {
   }
 
   updateStreamItems(page, offset) {
-    const lang = this.state.lang;
-    axios.get(`http://localhost:8080/api/twitch/slist/${lang}/${page}/${offset}`)
-      .then(res => {
-        this.setState({ currentStreams: res.data.data, totalStreams: res.data.total });
-      })
+    const app = this.props.app;
+    var url;
+    if(app === "twitch") {
+      const lang = this.state.lang;
+      url = `http://localhost:8080/api/${app}/slist/${lang}/${page}/${offset}`;
+    } else if(app === "nginx") {
+      url = `http://localhost:8080/api/${app}/list/${page}/${offset}`;
+    }
+
+    axios.get(url)
+    .then(res => {
+      this.setState({ currentStreams: res.data.data, totalStreams: res.data.total });
+    })
   }
 
   onChangePage(page, offset) {
@@ -56,9 +64,15 @@ class App extends Component {
                 Page <span className="font-weight-bold">{currentPage}</span> / <span className="font-weight-bold">{totalPages}</span>
               </span>
             )}
-            <div>
-              <LanguageButtons handleLangClick={this.handleLangClick}/>
-            </div>
+            {
+              this.props.app === "twitch"
+              ?
+              <div>
+                <LanguageButtons handleLangClick={this.handleLangClick}/>
+              </div>
+              :
+              <></>
+            }
           </div>
           <div className="d-flex flex-row py-3 align-items-center">
             <Pagination totalItems={totalStreams} onChangePage={this.onChangePage} lang={lang}/>
@@ -67,7 +81,7 @@ class App extends Component {
         <div className="flex-container">
           {currentStreams.map(stream => 
             <div key={stream.id} className="item auto">
-              <StreamCard stream={stream} />
+              <StreamCard app={this.props.app} stream={stream} />
             </div>
           )}
         </div>

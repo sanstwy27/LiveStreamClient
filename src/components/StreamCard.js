@@ -11,33 +11,56 @@ class StreamCard extends Component {
 
         return (
             <Fragment>
-                <div className="stream">
-                    <div className="stream-title">{title}</div>
-                    {/* <span className="live-label">LIVE</span> */}
-                    <Link to={{
-                        pathname: '/twitch/' + streamerAcct,
-                        state: {
-                            channel: streamerAcct,
-                            width: '100%',
-                            height: '100vh'
-                        }
-                    }}>
-                        <div className="stream-thumbnail">
-                            <img src={thumbnailUrl} alt={title}/>
-                        </div>
-                    </Link>
+                {
+                    this.props.app === "twitch"
+                    ?
+                    <div className="stream">
+                        <div className="stream-title">{title}</div>
+                        <Link to={{
+                            pathname: '/twitch/' + streamerAcct,
+                            state: {
+                                channel: streamerAcct,
+                                width: '100%',
+                                height: '100vh'
+                            }
+                        }}>
+                            <div className="stream-thumbnail">
+                                <img src={thumbnailUrl} alt={title}/>
+                            </div>
+                        </Link>
 
-                    <div className="info">
-                        <div className="streamer">
-                            {/* <Link to={'/stream/' + streamer}> */}
-                            【{streamerName}】
-                            {/* </Link> */}
-                        </div>                
-                        <div className="view-count">
-                            <i className="fa fa-eye" />  {viewerCount}
+                        <div className="info">
+                            <div className="streamer">
+                                【{streamerName}】
+                            </div>
+                            <div className="view-count">
+                                <i className="fa fa-eye" />  {viewerCount}
+                            </div>
                         </div>
                     </div>
-                </div>
+                    :
+                    <div className="stream">
+                        <div className="stream-title">{this.props.stream.streamUrl}</div>
+                        <Link to={{
+                            pathname: '/nginx/demo',
+                            state: {
+                                streamUrl: this.props.stream.streamUrl
+                            }
+                        }}>
+                            <div className="stream-thumbnail">
+                                <img src={"http://localhost:3000/nginx.png"} alt={title}/>
+                            </div>
+                        </Link>
+                        <div className="info">
+                            <div className="streamer">
+                                【demo】
+                            </div>
+                            <div className="view-count">
+                                <i className="fa fa-eye" />  {viewerCount}
+                            </div>
+                        </div>
+                    </div>
+                }
             </Fragment>
         )
     }
