@@ -17,20 +17,10 @@ class App extends Component {
   }
 
   updateStreamItems(page, offset) {
-    axios.get(`http://localhost:8080/api/twitch/slist/${page}/${offset}`)
+    axios.get(`http://localhost:8080/api/twitch/slist/zh/${page}/${offset}`)
       .then(res => {
         this.setState({ currentStreams: res.data.data, totalStreams: res.data.total });
       })
-  }
-
-  onPageChanged = data => {
-    const { allStreams } = this.state;
-    const { currentPage, totalPages, pageLimit } = data;
-    if( currentPage !== this.state.currentPage) {
-      const offset = (currentPage - 1) * pageLimit;
-      const currentStreams = allStreams.slice(offset, offset + pageLimit);
-      this.setState({ currentPage, currentStreams, totalPages });
-    }
   }
 
   onChangePage(page, offset) {
