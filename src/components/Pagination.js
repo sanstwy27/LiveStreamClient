@@ -39,12 +39,15 @@ class Pagination extends React.Component {
         var { totalItems, pageSize } = this.props;
         var pager = this.state.pager;
 
-        if (page < 1 || page > pager.totalPages) {
-            return;
-        }
-
+        var totalPages = Math.ceil(totalItems / pageSize);
         // get new pager object for specified page
-        pager = this.getPager(totalItems, page, pageSize);
+        if (page < 1) {
+            pager = this.getPager(totalItems, 1, pageSize);
+        } else if(page > totalPages) {
+            pager = this.getPager(totalItems, totalPages, pageSize);
+        } else {
+            pager = this.getPager(totalItems, page, pageSize);
+        }
 
         // update state
         this.setState({ pager: pager });
