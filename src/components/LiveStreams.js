@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import '../css/LiveStreams.scss';
 import Pagination from './Pagination';
 import StreamCard from './StreamCard';
+import LanguageButtons from './LanguageButtons'
+
+const languageRadios = [
+  { name: 'English', value: 'en' },
+  { name: '中文', value: 'zh' },
+];
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { currentStreams: [], currentPage: null, totalStreams: null, totalPages: null, lang: "zh" }
+    this.state = { currentStreams: [], currentPage: null, totalStreams: null, totalPages: null, lang: "en" }
 
     // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
     this.onChangePage = this.onChangePage.bind(this);
@@ -54,14 +61,9 @@ class App extends Component {
                 Page <span className="font-weight-bold">{currentPage}</span> / <span className="font-weight-bold">{totalPages}</span>
               </span>
             )}
-          </div>
-          <div>
-            <button onClick={() => this.handleLangClick("en")}>
-              English
-            </button>
-            <button onClick={() => this.handleLangClick("zh")}>
-              中文
-            </button>
+            <div>
+              <LanguageButtons handleLangClick={this.handleLangClick}/>
+            </div>
           </div>
           <div className="d-flex flex-row py-3 align-items-center">
             <Pagination totalItems={totalStreams} onChangePage={this.onChangePage} lang={lang}/>
