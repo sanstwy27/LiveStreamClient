@@ -7,17 +7,24 @@ import StreamCard from './StreamCard';
 class App extends Component {
   constructor() {
     super();
-    this.state = { currentStreams: [], currentPage: null, totalStreams: null, totalPages: null }
+    this.state = { currentStreams: [], currentPage: null, totalStreams: null, totalPages: null, lang: "zh" }
+
     // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
     this.onChangePage = this.onChangePage.bind(this);
+    this.handleLangClick = this.handleLangClick.bind(this);
   }
 
   componentDidMount() {
     this.updateStreamItems(1, 18);
   }
 
+  handleLangClick(selectedLang) {
+    this.setState({ lang: selectedLang });
+  }
+
   updateStreamItems(page, offset) {
-    axios.get(`http://localhost:8080/api/twitch/slist/zh/${page}/${offset}`)
+    const lang = this.state.lang;
+    axios.get(`http://localhost:8080/api/twitch/slist/${lang}/${page}/${offset}`)
       .then(res => {
         this.setState({ currentStreams: res.data.data, totalStreams: res.data.total });
       })
@@ -29,7 +36,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentStreams, currentPage, totalStreams, totalPages } = this.state;
+    const { currentStreams, currentPage, totalStreams, totalPages, lang } = this.state;
 
     if (!totalStreams || totalStreams === 0) return null;
 
@@ -48,8 +55,16 @@ class App extends Component {
               </span>
             )}
           </div>
+          <div>
+            <button onClick={() => this.handleLangClick("en")}>
+              English
+            </button>
+            <button onClick={() => this.handleLangClick("zh")}>
+              中文
+            </button>
+          </div>
           <div className="d-flex flex-row py-3 align-items-center">
-            <Pagination totalItems={totalStreams} onChangePage={this.onChangePage}/>
+            <Pagination totalItems={totalStreams} onChangePage={this.onChangePage} lang={lang}/>
           </div>
         </div>
         <div className="flex-container">

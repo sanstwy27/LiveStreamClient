@@ -21,6 +21,13 @@ class Pagination extends React.Component {
         this.state = { pager: {} };
     }
 
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.lang !== prevProps.lang) {
+            this.setPage(this.props.initialPage);
+        }
+      }
+
     componentDidMount() {
         // set page if items array isn't empty
         if (this.props.totalItems) {
