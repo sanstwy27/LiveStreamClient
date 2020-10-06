@@ -36,12 +36,10 @@ class App extends Component {
   onChangePage(page, offset) {
     // update state with new page of items
     this.updateStreamItems(page, offset);
-    // this.setState({ currentStreams: pageOfItems });
   }
 
   render() {
     const { currentStreams, currentPage, totalStreams, totalPages } = this.state;
-    // const totalStreams = allStreams.length;
 
     if (!totalStreams || totalStreams === 0) return null;
 
