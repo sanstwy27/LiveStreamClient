@@ -9,6 +9,8 @@ export default function LanguageButtons(props) {
     const radios = [
       { name: 'English', value: "en" },
       { name: '中文', value: "zh" },
+      { name: '日本語', value: "ja" },
+      { name: '한국어', value: "ko" },
     ];
   
     return (
