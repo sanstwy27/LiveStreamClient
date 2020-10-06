@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import '../css/LiveStreams.scss';
+import '../css/LiveTwitchStreams.scss';
 import Pagination from './Pagination';
 import StreamCard from './StreamCard';
 import LanguageButtons from './LanguageButtons'

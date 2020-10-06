@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {Router, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import LiveStreams from './components/LiveStreams';
-import MyPlayer from './components/player/MyPlayer';
+import LiveTwitchStreams from './components/LiveTwitchStreams';
+import LiveNginxStreams from './components/LiveNginxStreams';
 import TwitchPlayer from './components/player/TwitchPlayer';
+import NginxPlayer from './components/player/NginxPlayer';
 
 const customHistory = require("history").createBrowserHistory();
 
@@ -15,15 +16,19 @@ class App extends Component {
           <div>
               <Navbar/>
               <Route exact path="/twitch" render={props => (
-                  <LiveStreams  {...props} />
+                  <LiveTwitchStreams  {...props} />
               )}/>
 
               <Route exact path="/twitch/:username" render={(props) => (
-                  <TwitchPlayer {...props}/>
+                  <TwitchPlayer {...props} />
               )}/>
 
-              <Route exact path="/stream/:username" render={(props) => (
-                  <MyPlayer {...props}/>
+              <Route exact path="/nginx" render={props => (
+                  <LiveNginxStreams {...props} />
+              )}/>
+
+              <Route exact path="/nginx/:username" render={(props) => (
+                  <NginxPlayer {...props} />
               )}/>
 
               {/* <Route exact path="/settings" render={props => (
