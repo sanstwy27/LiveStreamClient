@@ -32,21 +32,23 @@ class TwitchPlayer extends React.Component {
             <div className="twitch">
                 <div className="twitch-video">
                     <iframe
-                    src={videoUrl}
-                    frameborder="0"
-                    scrolling="no"
-                    allowfullscreen="true"
-                    height="100%"
-                    width="100%">
+                        title="videoFrame"
+                        src={videoUrl}
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen="true"
+                        height="100%"
+                        width="100%">
                     </iframe>
                 </div>
                 <div className="twitch-chat">
                     <iframe
-                    frameborder="0"
-                    scrolling="no"
-                    src={chatUrl}
-                    height="100%"
-                    width="100%">
+                        title="chatFrame"
+                        frameborder="0"
+                        scrolling="no"
+                        src={chatUrl}
+                        height="100%"
+                        width="100%">
                     </iframe>
                 </div>
             </div>
