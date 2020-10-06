@@ -29,6 +29,10 @@ class App extends Component {
               {/* <Route exact path="/settings" render={props => (
                   <Settings {...props} />
               )}/> */}
+
+              <footer className='footer mt-5 py-3 bg-dark text-white'>
+                <div className='container'>Place sticky footer content here.</div>
+              </footer>
           </div>
       </Router>
     );
