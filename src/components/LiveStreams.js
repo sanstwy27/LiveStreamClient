@@ -64,7 +64,11 @@ class App extends Component {
                 Page <span className="font-weight-bold">{currentPage}</span> / <span className="font-weight-bold">{totalPages}</span>
               </span>
             )}
-            {
+          </div>
+          <div className="d-flex flex-row py-3 align-items-center">
+            <Pagination totalItems={totalStreams} onChangePage={this.onChangePage} lang={lang}/>
+          </div>
+          {
               this.props.app === "twitch"
               ?
               <div>
@@ -73,10 +77,6 @@ class App extends Component {
               :
               <></>
             }
-          </div>
-          <div className="d-flex flex-row py-3 align-items-center">
-            <Pagination totalItems={totalStreams} onChangePage={this.onChangePage} lang={lang}/>
-          </div>
         </div>
         <div className="flex-container">
           {currentStreams.map(stream => 
