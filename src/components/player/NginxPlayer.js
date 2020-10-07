@@ -29,7 +29,7 @@ class MyPlayer extends React.Component {
 
     var mediaDataSource = {
       type: 'flv',
-      url: this.props.location.state.streamUrl,
+      url: `http://localhost/flv?port=1935&app=hls&stream=${this.props.match.params.username}`,
       cors: true
     };
     player = flvjs.createPlayer(mediaDataSource, {

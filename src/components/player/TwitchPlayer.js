@@ -21,9 +21,9 @@ class TwitchPlayer extends React.Component {
     }
 
     render() {
-        const { channel } = this.props.location.state;
-        var videoUrl = "https://player.twitch.tv/?channel=" + channel + "&parent=localhost";
-        var chatUrl = "https://www.twitch.tv/embed/" + channel + "/chat?parent=localhost";        
+        const username = this.props.match.params.username;
+        var videoUrl = "https://player.twitch.tv/?channel=" + username + "&parent=localhost";
+        var chatUrl = "https://www.twitch.tv/embed/" + username + "/chat?parent=localhost";        
         return (
             // <div className="twitchPlayer">
             //     {/* <!-- Add a placeholder for the Twitch embed --> */ }

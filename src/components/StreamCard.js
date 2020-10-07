@@ -18,11 +18,6 @@ class StreamCard extends Component {
                         <div className="stream-title">{title}</div>
                         <Link to={{
                             pathname: '/twitch/' + streamerAcct,
-                            state: {
-                                channel: streamerAcct,
-                                width: '100%',
-                                height: '100vh'
-                            }
                         }}>
                             <div className="stream-thumbnail">
                                 <img src={thumbnailUrl} alt={title}/>
@@ -43,9 +38,7 @@ class StreamCard extends Component {
                         <div className="stream-title">{this.props.stream.streamUrl}</div>
                         <Link to={{
                             pathname: '/nginx/demo',
-                            state: {
-                                streamUrl: this.props.stream.streamUrl
-                            }
+                            // search: `?streamUrl=${this.props.stream.streamUrl}`
                         }}>
                             <div className="stream-thumbnail">
                                 <img src={"http://localhost:3000/nginx.png"} alt={title}/>
