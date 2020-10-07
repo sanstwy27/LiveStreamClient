@@ -1,7 +1,10 @@
 ## Snapshot
 
-#### Twitch List
+#### Twitch
+1. Streams List
 ![](snapshot1.png)
+2. Embeded Player
+![](snapshot2.png)
 
 #### Nginx(Custom Stream) List
-![](snapshot2.png)
+![](snapshot3.png)
