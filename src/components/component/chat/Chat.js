@@ -21,7 +21,7 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-      axios.get('http://localhost:9999/live_room', { withCredentials: true });
+      axios.get('http://localhost:9999/live_room', { withCredentials: true, params: { uuid: myUUID } });
       sockJS = new SockJS("http://localhost:9999/live");
       stompClient = Stomp.over(sockJS);
       this.connectSockJs(stompClient);
