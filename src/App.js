@@ -6,7 +6,6 @@ import Home from './components/body/Home';
 import LiveStreams from './components/body/LiveStreams';
 import TwitchPlayer from './components/component/player/TwitchPlayer';
 import NginxPlayer from './components/component/player/NginxPlayer';
-import Chat from './components/component/chat/Chat';
 
 const customHistory = require("history").createBrowserHistory();
 

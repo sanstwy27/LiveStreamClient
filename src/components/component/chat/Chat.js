@@ -60,7 +60,7 @@ class Chat extends Component {
       if(info.creator) {
         var msg = JSON.parse(info.msgBody);
         this.setState({
-          messages: [...this.state.messages, { me: msg.invokeId == myUUID, author: info.creator, body: msg.text }],
+          messages: [...this.state.messages, { me: msg.invokeId === myUUID, author: info.creator, body: msg.text }],
         })
       } else if(info.ip) {
         //TODO
