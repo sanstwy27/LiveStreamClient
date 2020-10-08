@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid'
-import '../css/Pagination.scss'
+import '../../css/Pagination.scss'
 
 const propTypes = {
     totalItems: PropTypes.number.isRequired,

@@ -1,6 +1,6 @@
 import React from 'react'
 import flvjs from 'flv.js'
-import '../../css/NginxPlayer.scss'
+import '../../../css/NginxPlayer.scss'
 
 var player;
 

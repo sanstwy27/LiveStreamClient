@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/TwitchPlayer.scss'
+import '../../../css/TwitchPlayer.scss'
 
 const EMBED_URL = 'https://embed.twitch.tv/embed/v1.js';
 

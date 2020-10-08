@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import '../css/StreamCard.scss'
+import '../../css/StreamCard.scss'
 
 class StreamCard extends Component {
     render() {

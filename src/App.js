@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Router, Route} from 'react-router-dom';
 
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import LiveStreams from './components/LiveStreams';
-import TwitchPlayer from './components/player/TwitchPlayer';
-import NginxPlayer from './components/player/NginxPlayer';
+import Navbar from './components/header/Navbar';
+import Home from './components/body/Home';
+import LiveStreams from './components/body/LiveStreams';
+import TwitchPlayer from './components/component/player/TwitchPlayer';
+import NginxPlayer from './components/component/player/NginxPlayer';
 
 const customHistory = require("history").createBrowserHistory();
 
