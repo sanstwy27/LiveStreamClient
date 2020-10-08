@@ -2,12 +2,6 @@ import React from 'react'
 import flvjs from 'flv.js'
 import '../../css/NginxPlayer.scss'
 
-// var mediaDataSource = {
-//   type: 'flv',
-//   url: 'http://1011.hlsplay.aodianyun.com/demo/game.flv',
-//   cors: true
-// };
-
 var player;
 
 class MyPlayer extends React.Component {

@@ -38,7 +38,6 @@ class StreamCard extends Component {
                         <div className="stream-title">{this.props.stream.streamUrl}</div>
                         <Link to={{
                             pathname: '/nginx/demo',
-                            // search: `?streamUrl=${this.props.stream.streamUrl}`
                         }}>
                             <div className="stream-thumbnail">
                                 <img src={"http://localhost:3000/nginx.png"} alt={title}/>
