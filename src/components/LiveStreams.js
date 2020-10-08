@@ -48,7 +48,7 @@ class App extends Component {
   render() {
     const { currentStreams, currentPage, totalStreams, totalPages, lang } = this.state;
 
-    if (!totalStreams || totalStreams === 0) return null;
+    if (!totalStreams || totalStreams === 0) return (<div className="live-container"></div>);
 
     const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
 
