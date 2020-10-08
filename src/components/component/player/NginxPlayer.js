@@ -1,5 +1,6 @@
 import React from 'react'
 import flvjs from 'flv.js'
+import Chat from '../chat/Chat'
 import '../../../css/NginxPlayer.scss'
 
 var player;
@@ -11,6 +12,7 @@ class MyPlayer extends React.Component {
 
   componentDidMount() {
     console.log('isSupported: ' + flvjs.isSupported());
+
     var element = document.getElementsByName('videoElement')[0];
     if (typeof player !== "undefined") {
         if (player != null) {
@@ -37,7 +39,7 @@ class MyPlayer extends React.Component {
 
   render() {
     return (
-      <div className="nginx">
+      <div className="nginx d-flex">
         <div className="video-container">
           <div>
             <video name="videoElement" className="centeredVideo" controls autoPlay poster="http://localhost:3000/nginx.png">
@@ -45,6 +47,7 @@ class MyPlayer extends React.Component {
             </video>
           </div>
         </div>
+        <Chat />
       </div>
     )
   }

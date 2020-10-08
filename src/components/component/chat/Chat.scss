@@ -1,0 +1,25 @@
+.nginx-chat {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 400px;
+    width: 250px;
+    margin: .5em;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-height: calc(100vh - 160px);
+  }
+
+.nginx-chat .MessageList {
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.nginx-chat .MessageForm {
+    background: #eee;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 3px 3px;
+    box-sizing: border-box;
+    flex: 0 0 30px;
+}
